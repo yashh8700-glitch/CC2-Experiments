@@ -1,0 +1,64 @@
+Experiment 1.1 contain dupicate (LC 217)
+
+Aim:
+To write a Python program to check whether an array contains any duplicate elements.
+
+Algorithm
+1. Start.
+2.Create an empty set.
+3.Traverse each element in the array.
+4.If the element is already present in the set, return True.
+Otherwise, add the element to the set.
+5.If the traversal completes without finding duplicates, return False.
+6.Stop.
+
+Code (Python)
+
+def contains_duplicate(nums):
+    seen = set()
+
+    for num in nums:
+        if num in seen:
+            return True
+        seen.add(num)
+
+    return False
+
+
+nums = [1, 2, 3, 1]
+print(contains_duplicate(nums))
+
+Experiment 1.2 contain dupicate 2(LC 219)
+
+
+Aim:
+To write a Python program to check whether two duplicate elements exist in an array such that the difference between their indices is at most k.
+
+Algorithm
+1.Start.
+2.Create an empty dictionary to store elements and their latest indices.
+3.Traverse the array.
+4.If the current element is already in the dictionary:
+5.Check if the difference between the current index and the stored index is less than or equal to k.
+6.If yes, return True.
+7.Update the current element's index in the dictionary.
+8.If no such pair is found after traversal, return False.
+9.Stop.
+
+Code (Python)
+
+def contains_nearby_duplicate(nums, k):
+    index_map = {}
+
+    for i, num in enumerate(nums):
+        if num in index_map and i - index_map[num] <= k:
+            return True
+        index_map[num] = i
+
+    return False
+
+
+nums = [1, 2, 3, 1]
+k = 3
+print(contains_nearby_duplicate(nums, k))
+
